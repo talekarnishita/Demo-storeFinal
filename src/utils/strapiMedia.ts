@@ -1,7 +1,7 @@
 /**
  * Resolve Strapi media URL (e.g. image). Use base URL when path is relative (e.g. production).
  */
-const BASE = import.meta.env.VITE_STRAPI_URL || '';
+const BASE = import.meta.env.VITE_STRAPI_URL || 'https://demo-backend-final.onrender.com';
 
 export function strapiMediaUrl(path: string | undefined | null): string {
   if (!path) return '';
