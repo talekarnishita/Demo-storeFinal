@@ -3,6 +3,7 @@
 This directory contains the React 18 Single Page Application (SPA) for the Demo store. It connects to the Strapi backend for data and Stripe for payments.
 
 **Live Storefront (Vercel):** [https://demo-store-final.vercel.app](https://demo-store-final.vercel.app)
+- **Source Code to Backend Repo**: [https://github.com/talekarnishita/demo-backend-final](https://github.com/talekarnishita/demo-backend-final)
 
 ## 📂 Project Structure
 
