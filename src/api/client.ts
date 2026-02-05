@@ -3,6 +3,7 @@
  * Set VITE_STRAPI_URL in .env (e.g. https://api.yourproject.com).
  */
 const BASE = import.meta.env.VITE_STRAPI_URL || '';
+const TOKEN = import.meta.env.VITE_API_TOKEN || '';
 
 export function apiUrl(path: string): string {
   const p = path.startsWith('/') ? path : `/${path}`;
@@ -14,12 +15,18 @@ export async function apiFetch<T>(
   options?: RequestInit
 ): Promise<T> {
   const url = apiUrl(path);
+  const headers: HeadersInit = {
+    'Content-Type': 'application/json',
+    ...options?.headers,
+  };
+
+  if (TOKEN) {
+    (headers as Record<string, string>)['Authorization'] = `Bearer ${TOKEN}`;
+  }
+
   const res = await fetch(url, {
     ...options,
-    headers: {
-      'Content-Type': 'application/json',
-      ...options?.headers,
-    },
+    headers,
   });
   if (!res.ok) {
     const text = await res.text();
